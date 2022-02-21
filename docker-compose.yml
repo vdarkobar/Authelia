@@ -5,7 +5,7 @@ networks:
     name: auth
     driver: bridge
 
-secrets:			#DODATI SECRETS FOLDER I PRATECE FAJLOVE U ./Authelia  ./secrets
+secrets:
   authelia_jwt_secret:
     file: ./secrets/authelia_jwt_secret
 
@@ -73,13 +73,13 @@ services:
       - authelia_storage_encryption_key
 
     ports:
-      - $AUTHPORT:9091	#DODATI AUTHPORT U .ENV
+      - $AUTHPORT:9091
 
     volumes:
       - ./Authelia:/config
 
     environment:
-      - TZ=$TZ		#DODATI U .ENV, Europe/Berlin
+      - TZ=$TZ
       - AUTHELIA_JWT_SECRET_FILE=/run/secrets/authelia_jwt_secret
       - AUTHELIA_SESSION_SECRET_FILE=/run/secrets/authelia_session_secret
       - AUTHELIA_STORAGE_MYSQL_PASSWORD_FILE=/run/secrets/authelia_storage_mysql_password
