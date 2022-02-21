@@ -1,0 +1,87 @@
+version: "3.9"
+
+networks:
+  auth:
+    name: auth
+    driver: bridge
+
+secrets:			#DODATI SECRETS FOLDER I PRATECE FAJLOVE U ./Authelia  ./secrets
+  authelia_jwt_secret:
+    file: ./secrets/authelia_jwt_secret
+
+  authelia_session_secret:
+    file: ./secrets/authelia_session_secret
+
+  authelia_storage_encryption_key:
+    file: ./secrets/authelia_storage_encryption_key
+
+  authelia_notifier_smtp_password:
+    file: ./secrets/authelia_notifier_smtp_password
+
+  authelia_storage_mysql_password:
+    file: ./secrets/authelia_storage_mysql_password
+
+  mysql_root_password:
+    file: ./secrets/mysql_root_password
+
+
+services:
+
+  # MariaDB
+  authelia-db:
+    image: mariadb:latest
+    #command: --skip-innodb-read-only-compressed	# Potrebno za NextCloud, Authelia?
+    container_name: authelia-db # change for multiple instances
+    restart: always
+
+    networks:
+      - auth
+
+    secrets: 
+      - mysql_root_password
+      - authelia_storage_mysql_password
+
+    volumes:
+      - ./nextcloud-db-data:/var/lib/mysql
+
+    environment:
+      - TZ=$TZ
+      - MYSQL_ROOT_PASSWORD_FILE=/run/secrets/mysql_root_password
+      - MYSQL_DATABASE=authelia-db
+      - MYSQL_USER=auth-dbuser
+      - MYSQL_PASSWORD_FILE=/run/secrets/authelia_storage_mysql_password
+
+
+  # Authelia (Lite) - Self-Hosted Single Sign-On and Two-Factor Authentication
+  authelia:
+    container_name: authelia
+    # Check this before upgrading: https://github.com/authelia/authelia/blob/master/BREAKING.md
+    image: authelia/authelia:latest
+    restart: always
+
+    depends_on:
+      - authelia-db
+
+    networks:
+      - auth
+
+    secrets:
+      - authelia_jwt_secret
+      - authelia_session_secret
+      - authelia_storage_mysql_password
+      - authelia_notifier_smtp_password
+      - authelia_storage_encryption_key
+
+    ports:
+      - $AUTHPORT:9091	#DODATI AUTHPORT U .ENV
+
+    volumes:
+      - ./Authelia:/config
+
+    environment:
+      - TZ=$TZ		#DODATI U .ENV, Europe/Berlin
+      - AUTHELIA_JWT_SECRET_FILE=/run/secrets/authelia_jwt_secret
+      - AUTHELIA_SESSION_SECRET_FILE=/run/secrets/authelia_session_secret
+      - AUTHELIA_STORAGE_MYSQL_PASSWORD_FILE=/run/secrets/authelia_storage_mysql_password
+      - AUTHELIA_NOTIFIER_SMTP_PASSWORD_FILE=/run/secrets/authelia_notifier_smtp_password
+      - AUTHELIA_STORAGE_ENCRYPTION_KEY_FILE=/run/secrets/authelia_storage_encryption_key
