@@ -58,9 +58,12 @@ services:
     # Check this before upgrading: https://github.com/authelia/authelia/blob/master/BREAKING.md
     image: authelia/authelia:latest
     restart: always
+    healthcheck:
+      disable: true
 
     depends_on:
       - authelia-db
+      # - redis
 
     networks:
       - auth
