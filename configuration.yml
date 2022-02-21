@@ -16,7 +16,7 @@ log:
 
 server:
   host: 0.0.0.0
-  port: 9091
+  port: 9091 #PORT ili 9091?
 #  path: ""
 #  read_buffer_size: 4096
 #  write_buffer_size: 4096
@@ -36,7 +36,7 @@ server:
 #  secret_key: # use docker secret file instead AUTHELIA_DUO_API_SECRET_KEY_FILE
 
 totp:
-  issuer: yourdomain.com #your authelia top-level domain
+  issuer: CHANGE-DOMAINNAME #yourdomain.com - your authelia top-level domain
   period: 30
   skew: 1
 
@@ -44,7 +44,7 @@ authentication_backend:
   disable_reset_password: false
   refresh_interval: 5m
   file:
-    path: /config/users_database.yml #this is where your authorized users are stored
+    path: /config/users_database.yml #this is where authorized users are stored
     # customize passwords based on https://docs.authelia.com/configuration/authentication/file.html
     password:
       algorithm: argon2id
@@ -60,16 +60,16 @@ access_control:
   rules:
     ## bypass rule
     - domain: 
-        - "auth.yourdomain.com" #This should be your authentication URL
+        - "auth.CHANGE-DOMAINNAME" #This should be your authentication URL
       policy: bypass
-    - domain: "yourdomain.com" #example domain to protect
-      policy: one_factor
-    - domain: "sub1.yourdomain.com" #example subdomain to protect
-      policy: one_factor
-    - domain: "sub2.yourdomain.com" #example subdomain to protect
-      policy: one_factor
-    - domain: "*.yourdomain.com" #example to protect all subdomains under top-level domain
-      policy: one_factor
+    #- domain: "CHANGE-DOMAINNAME" #example domain to protect
+    #  policy: one_factor
+    #- domain: "sub1.CHANGE-DOMAINNAME" #example subdomain to protect
+    #  policy: one_factor
+    #- domain: "sub2.CHANGE-DOMAINNAME" #example subdomain to protect
+    #  policy: one_factor
+    #- domain: "*.CHANGE-DOMAINNAME" #example to protect all subdomains under top-level domain
+    #  policy: one_factor
       #add or remove additional subdomains as necessary. currenlty only supports ONE top-level domain
       #any time you add a new subdomain, you will need to restart the Authelia container to recognize the new settings/rules
 
@@ -80,7 +80,7 @@ session:
   # secret: SECRET_GOES_HERE # use docker secret file instead AUTHELIA_SESSION_SECRET_FILE
   expiration: 3600 # 1 hour
   inactivity: 300 # 5 minutes
-  domain: example.com # Should match whatever your root protected domain is
+  domain: CHANGE-DOMAINNAME # Should match whatever your root protected domain is
 
 regulation:
   max_retries: 3
@@ -94,26 +94,26 @@ storage:
 #  encryption_key: generate_a_random_string_of_more_than_twenty_chars #use docker secret file instead
   mysql:
   # MySQL allows running multiple authelia instances. Create database and enter details below.
-    host: MYSQL_HOST
+    host: authelia-db
     port: 3306
-    database: authelia
-    username: DBUSERNAME
+    database: authelia-db
+    username: auth-dbuser
     # Password can also be set using a secret: https://docs.authelia.com/configuration/secrets.html
     # password: use docker secret file instead AUTHELIA_STORAGE_MYSQL_PASSWORD_FILE
 
 notifier:
   disable_startup_check: true #true/false
   smtp:
-    username: youremail@gmail.com #your email address
+    username: CHANGE-EMAIL #your email address
     # This secret can also be set using the env variables AUTHELIA_NOTIFIER_SMTP_PASSWORD_FILE
     # password: # use docker secret file instead AUTHELIA_NOTIFIER_SMTP_PASSWORD_FILE
     host: smtp.gmail.com #email smtp server
     port: 587 #email smtp port  #465?
-    sender: youremail@gmail.com
+    sender: CHANGE-EMAIL
 
     identifier: localhost
     subject: "[Authelia] {title}" #email subject
-    startup_check_address: youremail@gmail.com
+    startup_check_address: CHANGE-EMAIL
     disable_require_tls: false
     disable_html_emails: false
     tls:
