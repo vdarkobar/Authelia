@@ -5,7 +5,7 @@
 theme: dark #light, dark, grey, auto.
 
 # This secret can also be set using the env variables AUTHELIA_JWT_SECRET_FILE
-# I used this site to generate the secret: https://www.grc.com/passwords.htm
+# Use this site to generate the secret: https://www.grc.com/passwords.htm
 # jwt_secret: SECRET_GOES_HERE # use docker secret file instead AUTHELIA_JWT_SECRET_FILE
 
 # https://docs.authelia.com/configuration/miscellaneous.html#default-redirection-url
@@ -76,7 +76,7 @@ access_control:
 session:
   name: authelia_session
   # This secret can also be set using the env variables AUTHELIA_SESSION_SECRET_FILE
-  # Used a different secret, but the same site as jwt_secret above.
+  # Use this site to generate the secret: https://www.grc.com/passwords.htm
   # secret: SECRET_GOES_HERE # use docker secret file instead AUTHELIA_SESSION_SECRET_FILE
   expiration: 3600 # 1 hour
   inactivity: 300 # 5 minutes
