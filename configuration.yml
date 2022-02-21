@@ -17,15 +17,15 @@ log:
 server:
   host: 0.0.0.0
   port: 9091 #PORT ili 9091?
-#  path: ""
-#  read_buffer_size: 4096
-#  write_buffer_size: 4096
-#  enable_pprof: false
-#  enable_expvars: false
-#  disable_healthcheck: false
-#  tls:
-#    key: ""
-#    certificate: ""
+ path: ""
+  read_buffer_size: 4096
+  write_buffer_size: 4096
+  enable_pprof: false
+  enable_expvars: false
+  disable_healthcheck: false
+  tls:
+    key: ""
+    certificate: ""
 
 # Enable the following for Duo Push Notification support
 # https://www.authelia.com/docs/features/2fa/push-notifications.html
@@ -64,10 +64,12 @@ access_control:
       policy: bypass
     #- domain: "CHANGE-DOMAINNAME" #example domain to protect
     #  policy: one_factor
-    #- domain: "sub1.CHANGE-DOMAINNAME" #example subdomain to protect
-    #  policy: one_factor
-    #- domain: "sub2.CHANGE-DOMAINNAME" #example subdomain to protect
-    #  policy: one_factor
+    - domain:
+        - "pass.CHANGE-DOMAINNAME" #example subdomain to protect
+      policy: one_factor
+    - domain:
+        - "cloud.CHANGE-DOMAINNAME" #example subdomain to protect
+      policy: one_factor
     #- domain: "*.CHANGE-DOMAINNAME" #example to protect all subdomains under top-level domain
     #  policy: one_factor
       #add or remove additional subdomains as necessary. currenlty only supports ONE top-level domain
