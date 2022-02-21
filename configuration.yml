@@ -64,11 +64,9 @@ access_control:
       policy: bypass
     #- domain: "CHANGE-DOMAINNAME" #example domain to protect
     #  policy: one_factor
-    - domain:
-        - "pass.CHANGE-DOMAINNAME" #example subdomain to protect
+    - domain: "pass.CHANGE-DOMAINNAME" #example subdomain to protect
       policy: one_factor
-    - domain:
-        - "cloud.CHANGE-DOMAINNAME" #example subdomain to protect
+    - domain: "cloud.CHANGE-DOMAINNAME" #example subdomain to protect
       policy: one_factor
     #- domain: "*.CHANGE-DOMAINNAME" #example to protect all subdomains under top-level domain
     #  policy: one_factor
