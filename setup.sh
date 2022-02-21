@@ -27,8 +27,8 @@ sed -i "s|CHANGE_USERNAME1|${USERNAME1}|" users_database.yml && \
 sed -i "s|CHANGE_DISPLAYNAME1|${DISPLAYNAME1}|" users_database.yml && \
 sed -i "s|CHANGE-USEREMAIL1|${USEREMAIL1}|" users_database.yml && \
 rm README.md && \
-sudo chown -R root:root secrets/ && \
-sudo chmod -R 600 secrets/ && \
+#sudo chown -R root:root secrets/ && \
+#sudo chmod -R 600 secrets/ && \
 while true; do
     read -p "Execute 'docker-compose up -d' now? (y/n)" yn
     case $yn in
