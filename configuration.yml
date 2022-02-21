@@ -60,7 +60,7 @@ access_control:
   rules:
     ## bypass rule
     - domain: 
-        - "auth.CHANGE-DOMAINNAME" #This should be your authentication URL
+        - "CHANGE-SUBDOMAIN.CHANGE-DOMAINNAME" #This should be your authentication URL
       policy: bypass
     #- domain: "CHANGE-DOMAINNAME" #example domain to protect
     #  policy: one_factor
