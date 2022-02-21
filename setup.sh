@@ -6,9 +6,9 @@ echo -ne "${RED}Enter Domain name: "; read DNAME; \
 echo -ne "${RED}Enter Authelia Subomain: "; read SUBDNAME; \
 echo -ne "${RED}Enter Authentification Notifier Email: "; read ANEMAIL; \
 echo -ne "${RED}Enter Password for Authentification Email (Google App pass.): "; read PASSANEMAIL; \
-echo -ne "${RED}Enter Authelia Admin Username: "; read USERNAME1; \
-echo -ne "${RED}Enter Authelia Admin Displayname: "; read DISPLAYNAME1; \
-echo -ne "${RED}Enter Admin User Email: "; read USEREMAIL1; \
+echo -ne "${RED}Enter Authelia Administrator Username: "; read USERNAME1; \
+echo -ne "${RED}Enter Authelia Administrator Displayname: "; read DISPLAYNAME1; \
+echo -ne "${RED}Enter Authelia Administrator Email: "; read USEREMAIL1; \
 echo -ne "${RED}Enter Authelia Admin Password: "; read AAUPASS; \
 SALT=$(openssl rand -base64 32) \
 HASHED_PASSWORD=$(echo -n $AAUPASS| argon2 $SALT -k 1024 -t 1 -p 8 -e -id); sed -i "s|CHANGE_HASHED_PASSWORD1|${HASHED_PASSWORD}|" users_database.yml && \
