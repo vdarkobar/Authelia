@@ -1,0 +1,29 @@
+###############################################################
+#                         Users Database                      #
+###############################################################
+
+# This file can be used if you do not have an LDAP set up.\
+# First option: automated through setup.sh file
+# Second option: Create new hashed password: docker run authelia/authelia:latest authelia hash-password <new_password>
+# Third option: generate password at https://argon2.online/
+# https://docs.authelia.com/configuration/authentication/file.html
+
+# List of users
+users:
+  CHANGE_USERNAME1: #username for user 1. change to whatever you'd like
+    displayname: "CHANGE_DISPLAYNAME1" "User Name 1" #whatever you want the display name to be
+    password: "CHANGE_HASHED_PASSWORD1"
+    email: CHANGE-USEREMAIL1 #whatever your email address is
+    groups: #enter the groups you want the user to be part of below
+      - admins
+      - dev
+# EXAMPLE USER
+#  john:
+#    displayname: "John Doe"
+#    password: "$argon2id$v=19$m=1048576,p=john_strong_hashed_password"
+#    email: john@example.com
+#    groups:
+#      - admins
+#      - dev
+
+#any time you add a new user, you will need to restart the Authelia container to recognize the new settings/rules
