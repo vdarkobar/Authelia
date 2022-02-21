@@ -79,7 +79,7 @@ services:
       - $AUTHPORT:9091
 
     volumes:
-      - ./Authelia:/config
+      - ./:/config
 
     environment:
       - TZ=$TZ
