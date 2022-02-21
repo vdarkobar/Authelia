@@ -11,7 +11,7 @@
 # List of users
 users:
   CHANGE_USERNAME1: #username for user 1. change to whatever you'd like
-    displayname: "CHANGE_DISPLAYNAME1" "User Name 1" #whatever you want the display name to be
+    displayname: "CHANGE_DISPLAYNAME1" #"User Name 1" #whatever you want the display name to be
     password: "CHANGE_HASHED_PASSWORD1"
     email: CHANGE-USEREMAIL1 #whatever your email address is
     groups: #enter the groups you want the user to be part of below
