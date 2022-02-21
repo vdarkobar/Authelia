@@ -42,7 +42,7 @@ services:
       - authelia_storage_mysql_password
 
     volumes:
-      - ./nextcloud-db-data:/var/lib/mysql
+      - ./authelia-db-data:/var/lib/mysql
 
     environment:
       - TZ=$TZ
