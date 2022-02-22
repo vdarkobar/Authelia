@@ -16,7 +16,7 @@ Custom Nginx Configuration - Protected Doman
 ```
 location /authelia {
 internal;
-set $upstream_authelia http://192.168.1.112:9091/api/verify; #change the IP and Port to match the IP and Port of your Authelia Server
+set $upstream_authelia http://IP:PORT/api/verify; #Change to match your Authelia Server IP:PORT
 proxy_pass_request_body off;
 proxy_pass $upstream_authelia;    
 proxy_set_header Content-Length "";
@@ -58,7 +58,7 @@ proxy_set_header Remote-User $user;
 proxy_set_header Remote-Email $email;
 proxy_set_header Remote-Groups $groups;
 
-error_page 401 =302 https://auth.justluna.xyz/?rd=$target_url; #change this to match your authentication domain/subdomain
+error_page 401 =302 https://auth.example.com/?rd=$target_url; #Change this to match your authentication subdomain.domain
 
 client_body_buffer_size 128k;
 
@@ -86,7 +86,7 @@ proxy_cache_bypass $cookie_session;
 proxy_no_cache $cookie_session;
 proxy_buffers 64 256k;
 
-set_real_ip_from 192.168.1.0/24; #make sure this matches your network setup
+set_real_ip_from 192.168.1.0/24; #Make sure this matches your network setup
 real_ip_header CF-Connecting-IP;
 real_ip_recursive on;
 
