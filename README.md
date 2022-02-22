@@ -28,7 +28,7 @@ chmod +x setup.sh && \
 ./setup.sh
 ```
   
-### *Copy code to*:
+### *Copy Custom Nginx Configuration to*:
 ```
 Nginx Proxy Manager > Proxy Hosts > Edit > Advanced > Custom Nginx Configuration
 ```
