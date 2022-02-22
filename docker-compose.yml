@@ -69,6 +69,7 @@ services:
 
     environment:
       - TZ=$TZ
+      - AUTHELIA_SESSION_REDIS_PASSWORD_FILE=/run/secrets/authelia_session_redis_password_file
 
   # Authelia (Lite) - Self-Hosted Single Sign-On and Two-Factor Authentication
   authelia:
