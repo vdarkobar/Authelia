@@ -20,11 +20,13 @@ secrets:
 
   authelia_storage_mysql_password:
     file: ./secrets/authelia_storage_mysql_password
+    
+  authelia_session_redis_password_file:
+    file: ./secrets/authelia_session_redis_password_file
 
   mysql_root_password:
     file: ./secrets/mysql_root_password
-
-
+    
 services:
 
   # MariaDB
@@ -90,6 +92,7 @@ services:
       - authelia_storage_mysql_password
       - authelia_notifier_smtp_password
       - authelia_storage_encryption_key
+      - authelia_session_redis_password_file
 
     ports:
       - $AUTHPORT:9091
@@ -104,3 +107,4 @@ services:
       - AUTHELIA_STORAGE_MYSQL_PASSWORD_FILE=/run/secrets/authelia_storage_mysql_password
       - AUTHELIA_NOTIFIER_SMTP_PASSWORD_FILE=/run/secrets/authelia_notifier_smtp_password
       - AUTHELIA_STORAGE_ENCRYPTION_KEY_FILE=/run/secrets/authelia_storage_encryption_key
+      - AUTHELIA_SESSION_REDIS_PASSWORD_FILE=/run/secrets/authelia_session_redis_password_file
