@@ -95,6 +95,5 @@ proxy_buffers 64 256k;
 set_real_ip_from ; IP/SUBNET
 real_ip_header CF-Connecting-IP;
 real_ip_recursive on;
-
 }
 ```
