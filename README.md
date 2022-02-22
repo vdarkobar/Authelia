@@ -10,12 +10,13 @@ Login to <a href="https://dash.cloudflare.com/">CloudFlare</a> and set *Subdomai
 
 ```
     CNAME | subdomain | @ (or example.com)
-``` 
+```
 example:
 ```
     CNAME | auth | @ (or example.com)
-```  
-setup gmail account for notifier service (DUO?, pogledati authelia doc za ostale)
+```
+  
+Setup <a href="https://mail.google.com/">Gmail account</a>for Authentification Notifier service. Create <a href="https://myaccount.google.com/u/1/apppasswords">App-Password</a> for Authelia. 
   
 ### *Run this command*:
 ```
