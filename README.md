@@ -22,7 +22,7 @@ chmod +x setup.sh && \
 Nginx Proxy Manager > Proxy Hosts > Edit > Advanced > Custom Nginx Configuration
 ```
   
-Auth Subdomain
+Auth Subdomain (auth.example.com)
 ```
 location / {
 set $upstream_authelia http://IP:PORT; #Change to match your Authelia Server IP:PORT
@@ -60,7 +60,7 @@ real_ip_recursive on;
 }
 ```
   
-Protected Doman/Subdomain
+Protected Doman/Subdomain (blog.example.com, wiki.example.com, ...)
 ```
 location /authelia {
 internal;
