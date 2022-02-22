@@ -18,7 +18,7 @@ example:
     CNAME | auth | @ (or example.com)
 ```
   
-Setup <a href="https://mail.google.com/">Gmail account</a>for Authentification Notifier service. Create <a href="https://myaccount.google.com/u/1/apppasswords">App-Password</a> for Authelia. 
+Setup <a href="https://mail.google.com/">Gmail account</a> for Authentification Notifier service. Create <a href="https://myaccount.google.com/u/1/apppasswords">App-Password</a> for Authelia. 
   
 ### *Run this command*:
 ```
