@@ -104,11 +104,12 @@ storage:
 notifier:
   disable_startup_check: false #true/false
   smtp:
-    username: CHANGE-EMAIL #your email address
-    # This secret can also be set using the env variables AUTHELIA_NOTIFIER_SMTP_PASSWORD_FILE
-    # password: # use docker secret file instead AUTHELIA_NOTIFIER_SMTP_PASSWORD_FILE
     host: smtp.gmail.com #email smtp server
     port: 587 #email smtp port  #465?
+    # This secret can also be set using the env variables AUTHELIA_NOTIFIER_SMTP_PASSWORD_FILE
+    # password: # use docker secret file instead AUTHELIA_NOTIFIER_SMTP_PASSWORD_FILE
+    username: CHANGE-EMAIL #your email address
+    timeout: 10s
     sender: CHANGE-EMAIL
     identifier: localhost
     subject: "[Authelia] {title}" #email subject
@@ -116,6 +117,7 @@ notifier:
     disable_require_tls: false
     disable_html_emails: false
     tls:
+      server_name: smtp.gmail.com
       skip_verify: false
       minimum_version: TLS1.2
 
