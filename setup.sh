@@ -16,6 +16,7 @@ echo | tr -dc A-Za-z0-9 </dev/urandom | head -c 63 > secrets/authelia_jwt_secret
 echo | tr -dc A-Za-z0-9 </dev/urandom | head -c 63 > secrets/authelia_session_secret && \
 echo | tr -dc A-Za-z0-9 </dev/urandom | head -c 32 > secrets/authelia_storage_encryption_key && \
 echo | tr -dc A-Za-z0-9 </dev/urandom | head -c 32 > secrets/authelia_storage_mysql_password && \
+echo | tr -dc A-Za-z0-9 </dev/urandom | head -c 32 > secrets/authelia_session_redis_password_file && \
 echo | tr -dc A-Za-z0-9 </dev/urandom | head -c 32 > secrets/mysql_root_password && \
 sed -i "s|01|${TZONE}|" .env && \
 sed -i "s|02|${PORTN}|" .env && \
