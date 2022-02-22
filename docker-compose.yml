@@ -65,7 +65,7 @@ services:
       - ./redis:/data
 
     ports:
-      - $REDIS_PORT:6379
+      - $REDISPORT:6379
 
     environment:
       - TZ=$TZ
