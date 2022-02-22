@@ -6,9 +6,17 @@
 # Authelia
 Authelia (Lite) - Self-Hosted Single Sign-On and Two-Factor Authentication
 
-setup domain and auth CNAME for Authelia subdomain,  
-setup gmail account for notifier service (DUO?, pogledati authelia doc za ostale)
+Login to <a href="https://dash.cloudflare.com/">CloudFlare</a> and set Subdomain for your Authelia.
 
+```
+    CNAME | subdomain | @ (or example.com)
+``` 
+example:
+```
+    CNAME | auth | @ (or example.com)
+```  
+setup gmail account for notifier service (DUO?, pogledati authelia doc za ostale)
+  
 ### *Run this command*:
 ```
 RED='\033[0;31m'; echo -ne "${RED}Enter directory name: "; read DIR; \
