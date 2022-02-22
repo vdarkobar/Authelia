@@ -23,9 +23,9 @@ server:
   enable_pprof: false
   enable_expvars: false
   disable_healthcheck: false
-#  tls:
-#    key: ""
-#    certificate: ""
+  tls:
+    key: ""
+    certificate: ""
 
 # Enable the following for Duo Push Notification support
 # https://www.authelia.com/docs/features/2fa/push-notifications.html
@@ -64,10 +64,10 @@ access_control:
       policy: bypass
     #- domain: "CHANGE-DOMAINNAME" #example domain to protect
     #  policy: one_factor
-    - domain: "pass.CHANGE-DOMAINNAME" #example subdomain to protect
-      policy: one_factor
-    - domain: "cloud.CHANGE-DOMAINNAME" #example subdomain to protect
-      policy: one_factor
+    #- domain: "pass.CHANGE-DOMAINNAME" #example subdomain to protect
+    #  policy: one_factor
+    #- domain: "cloud.CHANGE-DOMAINNAME" #example subdomain to protect
+    #  policy: one_factor
     #- domain: "*.CHANGE-DOMAINNAME" #example to protect all subdomains under top-level domain
     #  policy: one_factor
       #add or remove additional subdomains as necessary. currenlty only supports ONE top-level domain
@@ -102,7 +102,7 @@ storage:
     # password: use docker secret file instead AUTHELIA_STORAGE_MYSQL_PASSWORD_FILE
 
 notifier:
-  disable_startup_check: true #true/false
+  disable_startup_check: false #true/false
   smtp:
     username: CHANGE-EMAIL #your email address
     # This secret can also be set using the env variables AUTHELIA_NOTIFIER_SMTP_PASSWORD_FILE
@@ -117,7 +117,7 @@ notifier:
     disable_require_tls: false
     disable_html_emails: false
     tls:
-      skip_verify: true
+      skip_verify: false
       minimum_version: TLS1.2
 
   # For testing purpose, notifications can be sent in a file. Be sure map the volume in docker-compose.
