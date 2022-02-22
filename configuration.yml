@@ -110,7 +110,6 @@ notifier:
     host: smtp.gmail.com #email smtp server
     port: 587 #email smtp port  #465?
     sender: CHANGE-EMAIL
-
     identifier: localhost
     subject: "[Authelia] {title}" #email subject
     startup_check_address: CHANGE-EMAIL
