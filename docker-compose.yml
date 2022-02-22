@@ -51,6 +51,22 @@ services:
       - MYSQL_USER=auth-dbuser
       - MYSQL_PASSWORD_FILE=/run/secrets/authelia_storage_mysql_password
 
+  redis:
+    image: redis:alpine
+    container_name: redis
+    restart: unless-stopped
+
+    networks:
+      - auth
+
+    volumes:
+      - ./redis:/data
+
+    ports:
+      - $REDIS_PORT:6379
+
+    environment:
+      - TZ=$TZ
 
   # Authelia (Lite) - Self-Hosted Single Sign-On and Two-Factor Authentication
   authelia:
@@ -63,7 +79,7 @@ services:
 
     depends_on:
       - authelia-db
-#      - redis
+      - redis
 
     networks:
       - auth
