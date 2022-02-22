@@ -117,7 +117,7 @@ notifier:
     disable_require_tls: false
     disable_html_emails: false
     tls:
-      skip_verify: false
+      skip_verify: true
       minimum_version: TLS1.2
 
   # For testing purpose, notifications can be sent in a file. Be sure map the volume in docker-compose.
