@@ -9,7 +9,7 @@ echo -ne "${RED}Enter Password for Authentification Email (Google App pass.): ";
 echo -ne "${RED}Enter Authelia Administrator Username: "; read USERNAME1; \
 echo -ne "${RED}Enter Authelia Administrator Displayname: "; read DISPLAYNAME1; \
 echo -ne "${RED}Enter Authelia Administrator Email: "; read USEREMAIL1; \
-echo -ne "${RED}Enter Authelia Admin Password: "; read AAUPASS; \
+echo -ne "${RED}Enter Authelia Administrator Password: "; read AAUPASS; \
 SALT=$(openssl rand -base64 32) \
 HASHED_PASSWORD=$(echo -n $AAUPASS| argon2 $SALT -k 1024 -t 1 -p 8 -e -id); sed -i "s|CHANGE_HASHED_PASSWORD1|${HASHED_PASSWORD}|" users_database.yml && \
 echo | tr -dc A-Za-z0-9 </dev/urandom | head -c 63 > secrets/authelia_jwt_secret && \
