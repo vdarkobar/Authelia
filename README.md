@@ -48,8 +48,8 @@ proxy_cache_bypass $cookie_session;
 proxy_no_cache $cookie_session;
 proxy_buffers 64 256k;
 
-# If behind reverse proxy, forwards the correct IP, assumes you're using Cloudflare. Adjust IP for your Docker network.
-set_real_ip_from 192.168.1.0/24; #make sure this IP range matches your netowrk setup
+# Assumes you're using Cloudflare.
+set_real_ip_from 192.168.1.0/24; #make sure this IP range matches your netowrk setup.
 real_ip_header CF-Connecting-IP;
 real_ip_recursive on;
 }
@@ -89,7 +89,7 @@ proxy_connect_timeout 240;
 }
 
 location / {
-set $upstream_CONTAINERNAME $forward_scheme://$server:$port; # Adjust container name
+set $upstream_CONTAINERNAME $forward_scheme://$server:$port; # Adjust container name.
 proxy_pass $upstream_CONTAINERNAME; # Adjust container name
 
 auth_request /authelia;
@@ -129,7 +129,7 @@ proxy_cache_bypass $cookie_session;
 proxy_no_cache $cookie_session;
 proxy_buffers 64 256k;
 
-set_real_ip_from 192.168.1.0/24; #Make sure this matches your network setup
+set_real_ip_from 192.168.1.0/24; #Make sure this matches your network setup.
 real_ip_header CF-Connecting-IP;
 real_ip_recursive on;
 
