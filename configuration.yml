@@ -67,7 +67,7 @@ access_control:
     #- domain: "pass.CHANGE-DOMAINNAME" #example subdomain to protect
     #  policy: one_factor
     #- domain: "cloud.CHANGE-DOMAINNAME" #example subdomain to protect
-    #  policy: one_factor
+    #  policy: two_factor
     #- domain: "*.CHANGE-DOMAINNAME" #example to protect all subdomains under top-level domain
     #  policy: one_factor
       #add or remove additional subdomains as necessary. currenlty only supports ONE top-level domain
