@@ -15,7 +15,7 @@ chmod +x setup.sh && \
 Custom Nginx Configuration - Auth Subdomain
 ```
 location / {
-set $upstream_authelia http://192.168.1.112:9091; #change the IP and Port to match the IP and Port of your Authelia Server
+set $upstream_authelia http://IP:PORT; #Change to match your Authelia Server IP:PORT
 proxy_pass $upstream_authelia;
 client_body_buffer_size 128k;
 
