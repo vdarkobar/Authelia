@@ -16,14 +16,12 @@ Custom Nginx Configuration - Protected Doman
 ```
 location /authelia {
 internal;
-
-### Change the IP and Port to match the IP and Port of your Authelia Server
-set $upstream_authelia http://<SERVER-IP>:<PORT-NUMMBER>/api/verify;
+set $upstream_authelia http://192.168.1.112:9091/api/verify; #change the IP and Port to match the IP and Port of your Authelia Server
 proxy_pass_request_body off;
 proxy_pass $upstream_authelia;    
 proxy_set_header Content-Length "";
 
-### Timeout if the real server is dead
+# Timeout if the real server is dead
 proxy_next_upstream error timeout invalid_header http_500 http_502 http_503;
 client_body_buffer_size 128k;
 proxy_set_header Host $host;
@@ -47,11 +45,9 @@ proxy_send_timeout 240;
 proxy_connect_timeout 240;
 }
 
-### Set Container name for the Service you want to protect
-### Additionaly, change //$server:$port to Auth. Services that are not in Docker (on other Servers)
 location / {
-set $upstream_<CONTAINER-NAME> $forward_scheme://$server:$port; 
-proxy_pass $upstream_<CONTAINER-NAME>;
+set $upstream_authelia $forward_scheme://$server:$port; 
+proxy_pass $upstream_authelia; 
 
 auth_request /authelia;
 auth_request_set $target_url https://$http_host$request_uri;
@@ -62,8 +58,7 @@ proxy_set_header Remote-User $user;
 proxy_set_header Remote-Email $email;
 proxy_set_header Remote-Groups $groups;
 
-### Change: auth.yourdomain.com to match your authentication domain/subdomain
-error_page 401 =302 https://auth.yourdomain.com/?rd=$target_url;
+error_page 401 =302 https://auth.justluna.xyz/?rd=$target_url; #change this to match your authentication domain/subdomain
 
 client_body_buffer_size 128k;
 
@@ -91,9 +86,9 @@ proxy_cache_bypass $cookie_session;
 proxy_no_cache $cookie_session;
 proxy_buffers 64 256k;
 
-### Make sure IP/SUBNET matches your network subnet (192.168.1.0/24)
-set_real_ip_from ; IP/SUBNET
+set_real_ip_from 192.168.1.0/24; #make sure this matches your network setup
 real_ip_header CF-Connecting-IP;
 real_ip_recursive on;
+
 }
 ```
