@@ -28,6 +28,14 @@ chmod +x setup.sh && \
 ./setup.sh
 ```
   
+### Log:
+```
+sudo docker-compose logs authelia
+sudo docker-compose logs authelia-db
+sudo docker logs -tf --tail="50" authelia
+sudo docker logs -tf --tail="50" authelia-db
+```
+  
 ### *Copy Custom Nginx Configuration to*:
 ```
 Nginx Proxy Manager > Proxy Hosts > Edit > Advanced > Custom Nginx Configuration
