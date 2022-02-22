@@ -23,9 +23,9 @@ server:
   enable_pprof: false
   enable_expvars: false
   disable_healthcheck: false
-  tls:
-    key: ""
-    certificate: ""
+#  tls:
+#    key: ""
+#    certificate: ""
 
 # Enable the following for Duo Push Notification support
 # https://www.authelia.com/docs/features/2fa/push-notifications.html
