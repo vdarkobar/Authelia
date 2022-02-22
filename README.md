@@ -89,8 +89,8 @@ proxy_connect_timeout 240;
 }
 
 location / {
-set $upstream_authelia $forward_scheme://$server:$port; 
-proxy_pass $upstream_authelia; 
+set $upstream_CONTAINERNAME $forward_scheme://$server:$port; # Adjust container name
+proxy_pass $upstream_CONTAINERNAME; # Adjust container name
 
 auth_request /authelia;
 auth_request_set $target_url https://$http_host$request_uri;
