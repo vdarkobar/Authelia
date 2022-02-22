@@ -121,6 +121,13 @@ notifier:
       skip_verify: false
       minimum_version: TLS1.2
 
+# Optional. Can improve performance on a busy system. If not enabled, session info is stored in memory.
+#  redis:
+#    host: redis
+#    port: 6379
+    # This secret can also be set using the env variables AUTHELIA_SESSION_REDIS_PASSWORD_FILE
+    # password: authelia
+
   # For testing purpose, notifications can be sent in a file. Be sure map the volume in docker-compose.
 #  filesystem:
 #    filename: /tmp/authelia/notification.txt
