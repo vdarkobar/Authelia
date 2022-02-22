@@ -1,7 +1,8 @@
 #!/bin/bash
 clear
 echo -ne "${RED}Enter Time Zone: "; read TZONE; \
-echo -ne "${RED}Enter Authelia Port Number: "; read PORTN; \
+echo -ne "${RED}Enter Authelia Port Number (9091): "; read PORTN; \
+echo -ne "${RED}Enter Redis Port Number (6379): "; read REDPORT; \
 echo -ne "${RED}Enter Domain name: "; read DNAME; \
 echo -ne "${RED}Enter Authelia Subomain: "; read SUBDNAME; \
 echo -ne "${RED}Enter Authentification Notifier Email: "; read ANEMAIL; \
@@ -10,7 +11,6 @@ echo -ne "${RED}Enter Authelia Administrator Username: "; read USERNAME1; \
 echo -ne "${RED}Enter Authelia Administrator Displayname: "; read DISPLAYNAME1; \
 echo -ne "${RED}Enter Authelia Administrator Email: "; read USEREMAIL1; \
 echo -ne "${RED}Enter Authelia Administrator Password: "; read AAUPASS; \
-echo -ne "${RED}Enter Authelia Administrator Password: "; read REDPORT; \
 SALT=$(openssl rand -base64 32) \
 HASHED_PASSWORD=$(echo -n $AAUPASS| argon2 $SALT -k 1024 -t 1 -p 8 -e -id); sed -i "s|CHANGE_HASHED_PASSWORD1|${HASHED_PASSWORD}|" users_database.yml && \
 echo | tr -dc A-Za-z0-9 </dev/urandom | head -c 63 > secrets/authelia_jwt_secret && \
