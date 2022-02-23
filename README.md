@@ -20,6 +20,15 @@ example:
   
 Setup <a href="https://mail.google.com/">Gmail account</a> for Authentification Notifier service. Create <a href="https://myaccount.google.com/u/1/apppasswords">App-Password</a> for Authelia. 
   
+#### *Decide what you will use for*:
+```
+Time Zone,
+Authelia and Redis Port Nummber (default values provided),
+Domain name to protect and Authelia Subomain (recomended: auth)
+Authentification Notifier Email and Password (Gmail), 
+Authelia Administrator Username, Displayname, Emailand and Password.
+```
+  
 ### *Run this command*:
 ```
 RED='\033[0;31m'; echo -ne "${RED}Enter directory name: "; read DIR; \
