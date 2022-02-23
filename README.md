@@ -23,7 +23,7 @@ Setup <a href="https://mail.google.com/">Gmail account</a> for Authentification 
 #### *Decide what you will use for*:
 ```
 Time Zone,
-Authelia and Redis Port Nummber (default values provided),
+Authelia and Redis Port Nummber (default values hint provided),
 Domain name to protect and Authelia Subomain (recomended: auth)
 Authentification Notifier Email and Password (Gmail), 
 Authelia Administrator Username, Displayname, Emailand and Password.
