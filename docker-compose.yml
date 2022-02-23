@@ -21,9 +21,6 @@ secrets:
   authelia_storage_mysql_password:
     file: ./secrets/authelia_storage_mysql_password
     
-  authelia_session_redis_password_file:
-    file: ./secrets/authelia_session_redis_password_file
-
   mysql_root_password:
     file: ./secrets/mysql_root_password
     
@@ -53,24 +50,6 @@ services:
       - MYSQL_USER=auth-dbuser
       - MYSQL_PASSWORD_FILE=/run/secrets/authelia_storage_mysql_password
 
-  redis:
-    image: redis:alpine
-    container_name: redis
-    restart: unless-stopped
-
-    networks:
-      - auth
-
-    volumes:
-      - ./redis:/data
-
-    ports:
-      - $REDISPORT:6379
-
-    environment:
-      - TZ=$TZ
-      - AUTHELIA_SESSION_REDIS_PASSWORD_FILE=/run/secrets/authelia_session_redis_password_file
-
   # Authelia (Lite) - Self-Hosted Single Sign-On and Two-Factor Authentication
   authelia:
     container_name: authelia
@@ -82,7 +61,6 @@ services:
 
     depends_on:
       - authelia-db
-      - redis
 
     networks:
       - auth
@@ -93,7 +71,6 @@ services:
       - authelia_storage_mysql_password
       - authelia_notifier_smtp_password
       - authelia_storage_encryption_key
-      - authelia_session_redis_password_file
 
     ports:
       - $AUTHPORT:9091
@@ -108,4 +85,3 @@ services:
       - AUTHELIA_STORAGE_MYSQL_PASSWORD_FILE=/run/secrets/authelia_storage_mysql_password
       - AUTHELIA_NOTIFIER_SMTP_PASSWORD_FILE=/run/secrets/authelia_notifier_smtp_password
       - AUTHELIA_STORAGE_ENCRYPTION_KEY_FILE=/run/secrets/authelia_storage_encryption_key
-      - AUTHELIA_SESSION_REDIS_PASSWORD_FILE=/run/secrets/authelia_session_redis_password_file
