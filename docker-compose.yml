@@ -50,14 +50,36 @@ services:
       - MYSQL_USER=auth-dbuser
       - MYSQL_PASSWORD_FILE=/run/secrets/authelia_storage_mysql_password
 
+  # Redis - Key-value Store
+  redis:
+    image: redis:alpine
+    container_name: redis
+    entrypoint: redis-server --appendonly yes  --maxmemory 512mb --maxmemory-policy allkeys-lru
+    restart: always
+
+    networks:
+      - auth
+
+    volumes:
+      - ./redis:/data
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+
+    ports:
+      - $REDISPORT:6379
+
+    environment:
+      - TZ=$TZ
+      - REDIS_PASSWORD=$REDIS_PASSWORD
+
   # Authelia (Lite) - Self-Hosted Single Sign-On and Two-Factor Authentication
   authelia:
     container_name: authelia
     # Check this before upgrading: https://github.com/authelia/authelia/blob/master/BREAKING.md
     image: authelia/authelia:latest
     restart: always
-#    healthcheck:
-#      disable: true
+    healthcheck:
+      disable: true
 
     depends_on:
       - authelia-db
