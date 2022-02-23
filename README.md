@@ -45,9 +45,4 @@ sudo docker logs -tf --tail="50" authelia
 sudo docker logs -tf --tail="50" authelia-db
 ```  
   
-After editing *configuration.yml*, for settings to apply, run:
-```
-sudo docker-compose restart
-```
-  
 ### Follow <i><a href="https://github.com/vdarkobar/NPM/blob/main/shared/Authelia%20Additional%20Settings.md">this link</a></i> for important additional Authelia settings.  
