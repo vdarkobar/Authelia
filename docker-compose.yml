@@ -26,7 +26,7 @@ secrets:
     
 services:
 
-  # MariaDB
+  # MariaDB - The open source relational database.
   authelia-db:
     image: mariadb:latest
     #command: --skip-innodb-read-only-compressed	# Potrebno za NextCloud, Authelia?
@@ -107,3 +107,23 @@ services:
       - AUTHELIA_STORAGE_MYSQL_PASSWORD_FILE=/run/secrets/authelia_storage_mysql_password
       - AUTHELIA_NOTIFIER_SMTP_PASSWORD_FILE=/run/secrets/authelia_notifier_smtp_password
       - AUTHELIA_STORAGE_ENCRYPTION_KEY_FILE=/run/secrets/authelia_storage_encryption_key
+
+  # Watchtower - automating Docker container base image updates.
+  watchtower:
+    image: containrrr/watchtower
+    container_name: watchtower
+    restart: always
+
+    networks:
+      - auth
+
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+    environment:
+      - TZ=$TZ
+      - WATCHTOWER_DEBUG=true
+      - WATCHTOWER_CLEANUP=true
+      - WATCHTOWER_REMOVE_VOLUMES=true
+      - WATCHTOWER_INCLUDE_STOPPED=true
+      - WATCHTOWER_SCHEDULE=0 30 5 * * * # Everyday at 5:30
