@@ -34,7 +34,7 @@ sudo docker-compose logs authelia
 sudo docker-compose logs authelia-db
 sudo docker logs -tf --tail="50" authelia
 sudo docker logs -tf --tail="50" authelia-db
-```
+```  
   
 After editing configuration.yml, for settings to apply, run:
 ```
