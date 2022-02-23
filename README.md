@@ -5,9 +5,7 @@
   
 # Authelia
 *Authelia (Lite) - Self-Hosted Single Sign-On and Two-Factor Authentication.*
-
----  
-
+  
 Login to <a href="https://dash.cloudflare.com/">CloudFlare</a> and set *Subdomain* for Authelia.
 
 ```
