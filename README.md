@@ -8,7 +8,7 @@
 
 ---  
 
-Login to <a href="https://dash.cloudflare.com/">CloudFlare</a> and set *Subdomain* for your Authelia.
+Login to <a href="https://dash.cloudflare.com/">CloudFlare</a> and set *Subdomain* for Authelia.
 
 ```
     CNAME | subdomain | @ (or example.com)
