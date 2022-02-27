@@ -25,7 +25,7 @@ Time Zone,
 Authelia and Redis Port Nummber (default values hint provided),
 Domain name to protect and Authelia Subomain (recomended: auth)
 Authentification Notifier Email and Password (Gmail), 
-Authelia Administrator Username, Displayname, Emailand and Password.
+Authelia Administrator Username, Displayname, Email and and Password.
 ```
   
 ### *Run this command*:
