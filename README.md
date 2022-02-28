@@ -17,7 +17,7 @@ example:
 ```
 ---
   
-Setup <a href="https://accounts.google.com/signin/v2/identifier?flowName">Gmail account</a> for Authentification Notifier service. Secure it with 2-Step Verification and then create <a href="https://myaccount.google.com/u/1/apppasswords">App-Password</a> for Authelia. 
+Setup <a href="https://accounts.google.com/signin/v2/identifier?flowName">Gmail account</a> for *Authentification Notifier service*. Secure it with 2-Step Verification and then create <a href="https://myaccount.google.com/u/1/apppasswords">App-Password</a> for Authelia. 
   
 #### *Decide what you will use for*:
 ```
