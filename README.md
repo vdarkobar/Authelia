@@ -44,4 +44,4 @@ sudo docker logs -tf --tail="50" authelia
 sudo docker logs -tf --tail="50" authelia-db
 ```  
   
-### Follow <i><a href="https://github.com/vdarkobar/NPM/blob/main/shared/Authelia%20Additional%20Settings.md">this link</a></i> for important additional Authelia settings.  
+### Follow <i><a href="https://github.com/vdarkobar/home-cloud/blob/main/shared/Authelia%20Additional%20Settings.md">this link</a></i> for important additional Authelia settings.  
