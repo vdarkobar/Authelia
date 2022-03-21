@@ -9,12 +9,9 @@
 Login to <a href="https://dash.cloudflare.com/">CloudFlare</a> and set *Subdomain* for Authelia.
 
 ```
-    CNAME | subdomain | @ (or example.com)
-```
-example:
-```
     CNAME | auth | @ (or example.com)
 ```
+  
 ---
   
 Setup <a href="https://accounts.google.com/signin/v2/identifier?flowName">Gmail account</a> for *Authentification Notifier service*. Enable *2-Step Verification* and create <a href="https://myaccount.google.com/u/1/apppasswords">App-Password</a> for Authelia. 
